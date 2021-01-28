@@ -41,6 +41,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("\(progressBar.progress)")
     }
     
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+        progressBar.progress = 0
+        pickGroupButton.setTitle("PRADĖTI", for: .normal)
+        studentLabel.isHidden = true
+        students = students + studentsOtherArray + deletedStudents
+        print("It is \(students.count) students")
+        studentsOtherArray.removeAll()
+        deletedStudents.removeAll()
+        progressBar.numberOfStudents = students.count
+        studentsTableView.reloadData()
+    }
+    
+    
     //MARK:- Students list
     
     var students: [Student] = [
@@ -63,6 +76,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     var studentsOtherArray: [Student] = []
+    var deletedStudents: [Student] = []
     
     
     override func viewDidLoad() {
@@ -123,7 +137,9 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            students.remove(at: indexPath.row)
+            let index = indexPath.row
+            deletedStudents.append(students[index])
+            students.remove(at: index)
             studentsTableView.reloadData()
             students.count < 12 ? showAlert() : nil
 //            studentsTableView.deleteRows(at: [indexPath], with: .fade)
