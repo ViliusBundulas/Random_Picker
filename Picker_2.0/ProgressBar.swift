@@ -69,7 +69,7 @@ class ProgressBar: UIView {
         let width = rect.width
         let height = rect.height
         let fontSize = CGFloat(30)
-        let offset = min(width, height) / 1.6
+        let offset = min(width, height) / 2
         
         let layer = CATextLayer()
         layer.string = "\(progress)/\(numberOfStudents)"
@@ -89,7 +89,7 @@ class ProgressBar: UIView {
         let width = rect.width
         let height = rect.height
         let fontSize = CGFloat(18)
-        let offset = min(width, height) / 2.2
+        let offset = min(width, height) / 2.6
         
         let layer = CATextLayer()
         layer.string = "Progresas"
