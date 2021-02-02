@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var pickGroupButton: UIButton! {
         didSet {
-            pickGroupButton.layer.cornerRadius = 25.0
+            pickGroupButton.layer.cornerRadius = pickGroupButton.bounds.height / 2
             pickGroupButton.layer.masksToBounds = true
             pickGroupButton.layer.backgroundColor = CGColor(red: 73.0/255, green: 159.0/255.0, blue: 213.0/255.0, alpha: 1)
         }
